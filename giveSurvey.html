@@ -41,7 +41,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Oasis Clinic</a>
+          <a class="navbar-brand" href="./index.html">Oasis Clinic</a>
         </div>
         
       </div>
@@ -49,8 +49,7 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="page-header text-center">
-      <h1>Hello, User</h1>
-      <h3>This is the landing page for the Oasis Clinic Database.</h3>
+      <h1>Choose a patient and select a survey to administer.</h1>
       
     </div>
 
@@ -70,15 +69,21 @@
           </table>
         </div>
         <div class="col-md-6">
-          <div class="row text-center">
-            <h2>Number of Patients</h2>
-            <h4 id="patientNumber">0</h4>
-          </div>
-          <div class="row text-center">
-            <a href="./giveSurvey.html" type="button" class="btn btn-default">Administer a Survey</a>
-          </div>
-       </div>
+          <table id="surveyTable" class="display">
+            <thead>
+              <tr>
+                <th>Surveys</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
+          </table>
+        </div>
         
+      </div>
+      <div class="row text-center">
+        <a id="openSurvey" href="#" type="button" class="btn btn-default">Open Survey</a>
       </div>
 
       <hr>
@@ -93,11 +98,5 @@
         <script src="js/main.js"></script>
         <script src="js/apiCalls.js"></script>
         <script src="js/populateTable.js"></script>
-
-        <script type="text/javascript">
-          $(document).ready(function () {
-            $('#patientTable').DataTable();
-          });
-        </script>
     </body>
 </html>
