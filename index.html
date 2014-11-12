@@ -20,6 +20,12 @@
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="css/main.css">
 
+        <!-- DataTables CSS -->
+        <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+        <!-- DataTables -->
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
+
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
     <body>
@@ -37,47 +43,53 @@
           </button>
           <a class="navbar-brand" href="#">Oasis Clinic</a>
         </div>
-        <div class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
-        </div><!--/.navbar-collapse -->
+        
       </div>
     </div>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Hello, world!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
-      </div>
+    <div class="page-header text-center">
+      <h1>Hello, User</h1>
+      <h3>This is the landing page for the Oasis Clinic Database.</h3>
+      
     </div>
 
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        <div class="col-md-6">
+          <table id="patientTable" class="display">
+            <thead>
+              <tr>
+                <th>Column 1</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Brian</td>
+              </tr>
+              <tr>
+                <td>Bradley</td>
+              </tr>
+              <tr>
+                <td>John</td>
+              </tr>
+              <tr>
+                <td>Fulton</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        <div class="col-md-6">
+          <div class="row text-center">
+            <h2>Number of Patients</h2>
+            <h4>150</h4>
+          </div>
+          <div class="row text-center">
+            <a href="http://www.google.com" type="button" class="btn btn-default">Administer a Survey</a>
+          </div>
        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div>
+        
       </div>
 
       <hr>
@@ -85,21 +97,15 @@
       <footer>
         <p>&copy; Company 2014</p>
       </footer>
-    </div> <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+    </div> <!-- /container --> 
 
         <script src="js/vendor/bootstrap.min.js"></script>
 
         <script src="js/main.js"></script>
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X');ga('send','pageview');
+          $(document).ready(function () {
+            $('#patientTable').DataTable();
+          });
         </script>
     </body>
 </html>
