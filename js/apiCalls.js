@@ -1,4 +1,4 @@
-function findAllPatients()
+function apiFindAllPatients()
 {
 	var patients = [];
 	$.ajax({
@@ -12,7 +12,12 @@ function findAllPatients()
 	return patients;
 }
 
-function findAllSurveys()
+function apiFindPatientById()
+{
+
+}
+
+function apiFindAllSurveys()
 {
 	var surveys = [];
 	$.ajax({

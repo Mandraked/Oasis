@@ -29,12 +29,71 @@ $(document).ready(function () {
 	});
 });
 
-$('#openSurvey').on('click', function() {
-	$('#openSurvey').attr('href', 'http://www.google.com');
+var patientList = apiFindAllPatients();
+var surveyList = apiFindAllSurveys();
+
+function getPatientIdByName(temp)
+{
+	var id = '';
+	var first = '';
+	var last = '';
+
+	try {
+		first = temp.split(' ')[0];
+		last = temp.split(' ')[1];
+	} catch (e) {
+
+	}
+
+	patientList.forEach(function (name) {
+		if (name.firstName == first && name.lastName == last)
+		{
+			id = name.patientId;
+		}
+	});
+
+	return id;
+}
+
+function getSurveyIdByName(temp)
+{
+	var id = '';
+
+	surveyList.forEach(function (name) {
+		if (name.name == temp)
+		{
+			id = name.id;
+		}
+	});
+
+	return id;
+}
+
+$('#viewDataButton').on('click', function() {
+	var path = './viewData.html';
+	var patientName = $('#patientTable').find('.selectedName td').html();
+
+	if (! patientName)
+	{
+		document.getElementById('viewDataFail').innerHTML = "Must select a patient first";
+		return;
+	}
+	var patientId = getPatientIdByName(patientName);
+
+	$('#viewDataButton').attr('href', './viewData.html?patientId='+patientId);
 });
 
-var patientList = findAllPatients();
-var surveyList = findAllSurveys();
+$('#openSurvey').on('click', function() {
+	var patientName = $('#patientTable').find('.selectedName td').html();
+	var surveyName = $('#surveyTable').find('.selectedSurvey td').html();
+	
+	var patientId = getPatientIdByName(patientName);
+	var surveyId = getSurveyIdByName(surveyName);
+
+	console.log(patientName, patientId);
+	console.log(surveyName, surveyId);
+	$('#openSurvey').attr('href', 'http://54.173.152.217/api/surveys/start/'+surveyId+'/'+patientId);
+});
 
 // function that takes in an array of patient names to populate the table
 function fillPatientTable(names)

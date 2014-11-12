@@ -41,7 +41,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Oasis Clinic</a>
+          <a class="navbar-brand" href="./index.html">Oasis Clinic</a>
         </div>
         
       </div>
@@ -49,19 +49,30 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="page-header text-center">
-      <h1>Hello, User</h1>
-      <h3>This is the landing page for the Oasis Clinic Database.</h3>
+      <h1>Patient Information View.</h1>
       
     </div>
 
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
+        
         <div class="col-md-6">
-          <table id="patientTable" class="display">
+          <div class="row">
+            <h3 id="patientName"></h3>
+            <h4 id="patientMedNumber"></h4>
+            <h4 id="patientPhoneNumber"></h4>
+            <h4 id="patientLastVisit"></h4>
+          </div>
+          <div class="row">
+            <a id="openResults" href="#" type="button" class="btn btn-default">View Survey Results</a>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <table id="patientSurveys" class="display">
             <thead>
               <tr>
-                <th>Patients</th>
+                <th>Completed Surveys</th>
               </tr>
             </thead>
             <tbody>
@@ -69,20 +80,6 @@
             </tbody>
           </table>
         </div>
-        <div class="col-md-6">
-          <div class="row text-center">
-            <h2>Number of Patients</h2>
-            <h4 id="patientNumber">0</h4>
-          </div>
-          <div class="row text-center">
-            <a href="./giveSurvey.html" type="button" class="btn btn-default">Administer a Survey</a>
-          </div>
-          <br>
-          <div class="row text-center">
-            <a id="viewDataButton" href="#" type="button" class="btn btn-default">View Patient Data</a>
-            <p id="viewDataFail"></p>
-          </div>
-       </div>
         
       </div>
 
@@ -97,12 +94,6 @@
 
         <script src="js/main.js"></script>
         <script src="js/apiCalls.js"></script>
-        <script src="js/populateTable.js"></script>
-
-        <script type="text/javascript">
-          $(document).ready(function () {
-            $('#patientTable').DataTable();
-          });
-        </script>
+        <script src="js/dataView.js"></script>
     </body>
 </html>
