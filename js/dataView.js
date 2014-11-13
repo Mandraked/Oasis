@@ -82,3 +82,37 @@ try {
 } catch (e) {
 
 }
+
+function loadResults()
+{
+	var surveyResults = apiFindSurveyResultsByIds(patientId, surveyIdNum);
+
+	var definition = surveyResults.definition;
+	var data = surveyResults.data;
+	console.log(data[0].data);
+	var num = Object.keys(definition).length;
+	var numResponses = Object.keys(data).length;
+
+	var str = '';
+
+	for (var i=0; i<numResponses; i++)
+	{
+		for (var j=0; j<num; j++)
+		{
+			str += definition[j] + '<br>';
+			str += data[i].data[j] + '<br>';
+			str += '<br>';
+		}
+	}
+
+	document.getElementById('placeHere').innerHTML = str;
+}
+
+
+
+
+
+
+
+
+

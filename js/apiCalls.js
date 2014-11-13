@@ -40,6 +40,20 @@ function apiFindAllSurveys()
 	return surveys;
 }
 
+function apiFindSurveyResultsByIds(patientId, surveyId)
+{
+	var results = [];
+	$.ajax({
+		url: 'http://54.173.152.217/api/surveys/responses/'+surveyId+'/'+patientId,
+		async: false,
+		dataType: 'json',
+		success: function(data) {
+			results = data;
+		}
+	});
+	return results;
+}
+
 function apiCreatePatient(data)
 {
 	var t = [];
