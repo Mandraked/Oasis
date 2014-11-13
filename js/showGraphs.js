@@ -116,6 +116,7 @@ $(document).ready(function () {
 $('#surveyQuestions').on('click', 'tr', function () {
 	var text = $(this).find($('.selectedQuestion td')).context.innerHTML;
 	text = text.split('>')[1].split('<')[0];
+	console.log(text);
 	buildChart(text, active);
 });
 

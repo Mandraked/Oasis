@@ -96,17 +96,20 @@ function loadResults()
 	console.log(data[0].data);
 	var num = Object.keys(definition).length;
 	var numResponses = Object.keys(data).length;
+	console.log(surveyResults);
 
 	var str = '';
 
 	for (var i=0; i<numResponses; i++)
 	{
+		str += dateConvert(data[i].date) + '<br>';
 		for (var j=0; j<num; j++)
 		{
 			str += definition[j] + '<br>';
 			str += data[i].data[j] + '<br>';
 			str += '<br>';
 		}
+		str += '<br>';
 	}
 
 	document.getElementById('placeHere').innerHTML = str;
