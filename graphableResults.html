@@ -49,40 +49,36 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="page-header text-center">
-      <h1>Patient Profile</h1>
+      <h1>Results</h1>
       
     </div>
 
     <div class="container">
       <!-- Example row of columns -->
-      <div class="row">
-        
-        <div class="col-md-6">
-          <div class="row">
-            <h3 id="patientName"></h3>
-            <h4 id="patientMedNumber"></h4>
-            <h4 id="patientPhoneNumber"></h4>
-            <h4 id="patientLastVisit"></h4>
-          </div>
-          <div class="row">
-            <a id="openResults" href="#" type="button" class="btn btn-default">Printable Survey Results</a>
-            <a id="graphResults" href="#" type="button" class="btn btn-default">Graphable Results</a>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <table id="patientSurveys" class="display">
+      <div class="btn-group">
+        <button id="surveysList" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          Surveys
+          <span class="caret"></span>
+        </button>
+        <ul id="dropdownList" class="dropdown-menu" role="menu">
+        </ul>
+      </div>
+      <br><br>
+      <div class="col-md-6">
+        <table id="surveyQuestions" class="display">
             <thead>
               <tr>
-                <th>Completed Surveys</th>
+                <th>Survey Questions</th>
               </tr>
             </thead>
             <tbody>
               
             </tbody>
           </table>
-        </div>
-        
       </div>
+      <div id="highGraph" class="col-md-6">
+      </div>
+      <a id="backButton" type="button" class="btn btn-default">Back</a>
 
       <hr>
 
@@ -96,5 +92,9 @@
         <script src="js/main.js"></script>
         <script src="js/apiCalls.js"></script>
         <script src="js/dataView.js"></script>
+        <script src="js/highcharts.js"></script>
+        <script type="text/javascript">
+          loadCharts();
+        </script>
     </body>
 </html>

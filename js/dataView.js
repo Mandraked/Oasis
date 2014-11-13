@@ -63,6 +63,10 @@ $('#openResults').on('click', function() {
 	$('#openResults').attr('href', './viewResults.html?surveyId='+surveyId+'&patientId='+patientId);
 });
 
+$('#graphResults').on('click', function() {
+	$('#graphResults').attr('href', './graphableResults.html?patientId='+patientId);
+});
+
 function fillSurveyTable(surveys)
 {
 	surveys.forEach(function (temp) {
@@ -108,7 +112,56 @@ function loadResults()
 	document.getElementById('placeHere').innerHTML = str;
 }
 
+var active = '';
 
+function setActiveChart(v)
+{
+	active = v;
+}
+
+function loadCharts()
+{
+	var base1 = '<li><a id="';
+	var base2 = '" onclick=setActiveChart(this.id)">';
+	var base3 = '</a></li>';
+	var str = '';
+
+	var num = Object.keys(surveyList).length;
+	for (var i=0; i<num; i++)
+	{
+		str += base1+surveyList[i]['name']+base2+surveyList[i]['name']+base3;
+	}
+	console.log(str);
+	document.getElementById('dropdownList').innerHTML = str;
+
+	$('#highGraph').highcharts({
+		title: {
+			text: "I have no idea what I'm doing",
+			x: -20
+		},
+		subtitle: {
+			text: 'Hi John',
+			x: -20
+		},
+		xAxis: {
+			categories: ['Jan','Feb','Mar']
+		},
+		yAxis: {
+			title: {
+				text: 'Pull to Chill Ratio'
+			},
+			plotLines: [{
+				value: 0,
+				width: 1,
+				color: '#808080'
+			}]
+		},
+		series: [{
+			name: 'idk',
+			data: [1,5,2,3]
+		}]
+	});
+}
 
 
 
