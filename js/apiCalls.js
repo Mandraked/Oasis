@@ -44,18 +44,19 @@ function apiCreatePatient(data)
 		contentType: "application/json"
 		})
 		.done(function(d) {
-			console.log(d)
+			t = d;
 		});
+
+		return t;
 }
 
 function makeDataForCreate(medicalId, firstName, lastName)
 {
 	var data = {};
-	//data['patientId'] = patientId;
+
 	data.medicalId = medicalId;
 	data.firstName = firstName;
 	data.lastName = lastName;
-	//data['lastInteraction'] = lastInteraction;
 
 	return data;
 }

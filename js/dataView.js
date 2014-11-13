@@ -45,7 +45,8 @@ $('#openResults').on('click', function() {
 	
 	var surveyId = getSurveyIdByName(surveyName);
 
-	//console.log(surveyName, surveyId);
+	console.log(patientId);
+	console.log(surveyName, surveyId);
 	//$('#openResults').attr('href', '#'+surveyId+'/'+patientId);
 });
 

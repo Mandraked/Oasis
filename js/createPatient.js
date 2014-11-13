@@ -5,5 +5,13 @@ $('#submitCreate').on('click', function() {
 
 	var data = makeDataForCreate(medicalId, firstName, lastName);
 
-	apiCreatePatient(data);
+	var user = apiCreatePatient(data);
+	if (!user)
+	{
+		alert("Create Patient Failed");
+	}
+	else
+	{
+		alert("Success!");
+	}
 });
