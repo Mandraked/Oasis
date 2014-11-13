@@ -2,7 +2,7 @@ function apiFindAllPatients()
 {
 	var patients = [];
 	$.ajax({
-		url: 'http://54.173.152.217/api/patients/find/any',
+		url: 'http://54.173.152.217/api/patients/find/all',
 		async: false,
 		dataType: 'json',
 		success: function(data) {
@@ -12,9 +12,18 @@ function apiFindAllPatients()
 	return patients;
 }
 
-function apiFindPatientById()
+function apiFindPatientById(id)
 {
-
+	var patient = [];
+	$.ajax({
+		url: 'http://54.173.152.217/api/patients/'+id,
+		async: false,
+		dataType: 'json',
+		success: function(data) {
+			patient = data;
+		}
+	});
+	return patient;
 }
 
 function apiFindAllSurveys()
@@ -46,7 +55,6 @@ function apiCreatePatient(data)
 		.done(function(d) {
 			t = d;
 		});
-
 		return t;
 }
 

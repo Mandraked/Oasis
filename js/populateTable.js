@@ -70,7 +70,7 @@ function getSurveyIdByName(temp)
 }
 
 $('#viewDataButton').on('click', function() {
-	var path = './viewData.html';
+	var path = './patientPage.html';
 	var patientName = $('#patientTable').find('.selectedName td').html();
 
 	if (! patientName)
@@ -80,7 +80,7 @@ $('#viewDataButton').on('click', function() {
 	}
 	var patientId = getPatientIdByName(patientName);
 
-	$('#viewDataButton').attr('href', './viewData.html?patientId='+patientId);
+	$('#viewDataButton').attr('href', './patientPage.html?patientId='+patientId);
 });
 
 $('#openSurvey').on('click', function() {

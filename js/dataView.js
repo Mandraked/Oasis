@@ -1,11 +1,23 @@
 
-function getUrlVars() {
+function getUrlVars()
+{
 	var vars = {};
 	var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
 		vars[key] = value;
 	});
 	return vars;
 }
+
+function dateConvert(epoch)
+{
+	var d = new Date(0);
+	d.setUTCSeconds(epoch);
+	return d;
+}
+
+$('#backButton').on('click', function () {
+	window.history.back();
+});
 
 $(document).ready(function () {
 	var table = $('#patientSurveys').DataTable();
@@ -25,6 +37,7 @@ $(document).ready(function () {
 });
 
 var patientId = getUrlVars()['patientId'];
+var surveyIdNum = getUrlVars()['surveyId'];
 
 function getSurveyIdByName(temp)
 {
@@ -47,7 +60,7 @@ $('#openResults').on('click', function() {
 
 	console.log(patientId);
 	console.log(surveyName, surveyId);
-	//$('#openResults').attr('href', '#'+surveyId+'/'+patientId);
+	$('#openResults').attr('href', './viewResults.html?surveyId='+surveyId+'&patientId='+patientId);
 });
 
 function fillSurveyTable(surveys)
@@ -60,16 +73,12 @@ function fillSurveyTable(surveys)
 var surveyList = apiFindAllSurveys();
 fillSurveyTable(surveyList);
 
-function p()
-{
-	this.firstName = 'Bradley';
-	this.lastName = 'Davis';
-	this.lastInteraction = 'idk';
+var patient = apiFindPatientById(patientId);
+
+try {
+	document.getElementById('patientName').innerHTML = patient.firstName+' '+patient.lastName;
+	document.getElementById('patientMedNumber').innerHTML = patient.medicalId;
+	document.getElementById('patientLastVisit').innerHTML = dateConvert(patient.lastInteraction);
+} catch (e) {
+
 }
-
-var patient = new p();//apiFindPatientById(patientId);
-
-document.getElementById('patientName').innerHTML = patient.firstName+' '+patient.lastName;
-document.getElementById('patientMedNumber').innerHTML = patient.medicalId;
-document.getElementById('patientPhoneNumber').innerHTML = 'temp phone number';
-document.getElementById('patientLastVisit').innerHTML = patient.lastInteraction;
